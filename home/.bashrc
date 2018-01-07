@@ -49,6 +49,6 @@ fi
 # Set the PS1 prompt (with colors).
 # Based on http://www-128.ibm.com/developerworks/linux/library/l-tip-prompt/
 # And http://networking.ringofsaturn.com/Unix/Bash-prompts.php .
-PS1="\[\e[36;1m\]debTest:\[\e[32;1m\]\w$ \[\e[0m\]"
+PS1="\[\e[31;1m\]--debTest--:\[\e[32;1m\]\w$ \[\e[0m\]"
 
 cd /debian

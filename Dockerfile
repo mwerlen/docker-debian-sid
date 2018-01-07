@@ -11,8 +11,8 @@ RUN apt-get install -y build-essential devscripts dh-make dh-python python3 debh
             quilt pbuilder sbuild lintian git-buildpackage debootstrap apt-file apt-utils \
             fakeroot dh-autoreconf
 
-RUN apt-get install -y vim less more \
-    && apt-get autoremove
+RUN apt-get install -y vim less \
+    && apt-get autoremove -y
 
 COPY home/.bash_aliases \
      home/.bash_profile \
