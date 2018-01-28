@@ -1,1 +1,2 @@
-docker build -t mwerlen/debian-sid .
+docker build \
+    -t mwerlen/debian-sid .

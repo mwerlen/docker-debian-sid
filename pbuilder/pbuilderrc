@@ -1,0 +1,9 @@
+# Pointing on debian mirrot
+MIRRORSITE=http://deb.debian.org/debian
+# Enabling local deb
+OTHERMIRROR="deb [trusted=yes] file:///debian/pbuilder/debs ./"
+BINDMOUNTS="/debian/pbuilder/debs"
+# the hook dir may already be set/populated!
+HOOKDIR="/debian/pbuilder/hooks"
+# this is necessary for running ''apt-ftparchive'' in the hook below
+EXTRAPACKAGES="apt-utils"

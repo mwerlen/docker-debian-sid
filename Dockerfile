@@ -14,6 +14,8 @@ RUN apt-get install -y build-essential devscripts dh-make dh-python python3 debh
 RUN apt-get install -y vim less \
     && apt-get autoremove -y
 
+RUN mkdir /debian /home/mwerlen
+
 COPY home/.bash_aliases \
      home/.bash_profile \
      home/.bashrc \
@@ -21,8 +23,16 @@ COPY home/.bash_aliases \
      home/.profile \
      home/.screenrc \
      home/.quiltrc \
-     /root/
+     /home/mwerlen/
 
-RUN mkdir /debian
+COPY pbuilder/pbuilderrc /etc/pbuilderrc
 
+RUN chown -R 1000:1000 /home/mwerlen
+
+RUN adduser --disabled-password --gecos '' mwerlen
+RUN adduser mwerlen sudo
+RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+USER mwerlen
+
+COPY pbuilder/base.tgz /var/cache/pbuilder
 CMD ["/bin/bash"]
