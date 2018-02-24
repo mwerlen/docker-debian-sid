@@ -51,4 +51,7 @@ fi
 # And http://networking.ringofsaturn.com/Unix/Bash-prompts.php .
 PS1="\[\e[31;1m\]--debTest--:\[\e[32;1m\]\w$ \[\e[0m\]"
 
+export DEBFULLNAME="Maxime Werlen"
+export DEBEMAIL="maxime@werlen.fr"
+
 cd /debian
