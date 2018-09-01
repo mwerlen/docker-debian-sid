@@ -1,1 +1,4 @@
 .git
+rootfs
+rootfs.tar
+*.sh

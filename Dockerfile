@@ -1,16 +1,16 @@
-FROM debian:sid
-
+FROM scratch
 MAINTAINER Maxime Werlen <maxime@werlen.fr>
 ENV DEBIAN_FRONTEND noninteractive
 
 ENV TERM xterm
+ADD rootfs.tar.xz /
 
 # Installing some dependencies
-RUN apt-get update \
+RUN apt-get update --fix-missing \
     && apt-get dist-upgrade -y \
     && apt-get install -y build-essential devscripts dh-make dh-python python3 debhelper \
             quilt pbuilder sbuild lintian git-buildpackage debootstrap apt-file apt-utils \
-            fakeroot dh-autoreconf vim less locales \
+            fakeroot dh-autoreconf vim less locales autopkgtest \
     && apt-get autoremove -y
 
 # Fixing timezone
