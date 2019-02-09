@@ -1,6 +1,7 @@
 [user]
 	name = mwerlen
 	email = maxime@werlen.fr
+    signingkey = 0D70DDA6
 [alias]
 	cm = commit
 	co = checkout
@@ -12,6 +13,13 @@
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
 	patch = add --patch
     lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+    lolas = log --graph --decorate --date=short --pretty=format:\"%C(auto,yellow)%h%C(auto,magenta)% G? %C(auto,blue)%ad %C(auto,green)%<(7,trunc)%aN%C(auto,reset) %s %C(auto,red)%gD% D\" --abbrev-commit --all
+[commit]
+    gpgSign = 1
+[tag]
+    gpgSign = 1
+[gpg]
+    programm = gpg --pinentry-mode loopback
 [help]
 	autocorrect = 1
 [color]

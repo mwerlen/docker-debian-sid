@@ -30,7 +30,7 @@ COPY home/.bash_aliases \
      home/.vimrc \
      /home/mwerlen/
 
-COPY pbuilder/pbuilderrc /etc/pbuilderrc
+#COPY pbuilder/pbuilderrc /etc/pbuilderrc
 
 RUN chown -R 1000:1000 /home/mwerlen
 
@@ -40,6 +40,6 @@ RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 USER mwerlen
 
 # Copying pbuilder base image
-COPY pbuilder/base.tgz /var/cache/pbuilder
+#COPY pbuilder/base.tgz /var/cache/pbuilder
 
 CMD ["/bin/bash"]

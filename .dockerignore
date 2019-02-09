@@ -1,4 +1,8 @@
 .git
+.gitignore
+README.md
 rootfs
 rootfs.tar
 *.sh
+pbuilder
+pbuilderrc
