@@ -1,29 +1,29 @@
 #!/bin/bash
-set -euo pipefail
+set -eu
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
-if test `find "rootfs.tar.xz" -mtime 3`
-then
+if [[ `find . -name 'rootfs.tar.xz' -mtime -3 | wc -l` -eq 1 ]]; then
+    echo "Existing recent rootfs, using it !"
+else
     echo "Need to rebuild rootfs"
     # Downloading base debian image
-    sudo debootstrap sid rootfs http://ftp.debian.org/debian || sudo debootstrap sid rootfs http://debian.mirrors.ovh.net/debian
+    sudo debootstrap sid rootfs http://ftp.debian.org/debian \
+        || sudo debootstrap sid rootfs http://debian.mirrors.ovh.net/debian \
+        || ( sudo debootstrap --no-check-gpg sid rootfs http://ftp.debian.org/debian && echo "deboostrap done whitout GPG check !")
 
     # Preparing base image
     sudo tar -C rootfs -cf rootfs.tar .
     sudo chown mwerlen:mwerlen rootfs.tar
     sudo rm -rf rootfs
     xz -f rootfs.tar
-else
-    echo "Existing recent rootfs, using it !"
 fi
 
 # Building with docker
 docker build -t mwerlen/debian-sid .
 
-if [ ! -f "$DIR/pbuilder/base.tgz" ]
+if [[ ! -f "$DIR/pbuilder/base.tgz" ]];  then
 # Creating or updating base.tgz for pbuilder
-then
 
     echo "Preparing pbuilder base.tgz"
     
@@ -42,9 +42,8 @@ then
             --mirror http://ftp.debian.org/debian \
             --debootstrapopts "--keyring=/usr/share/keyrings/debian-archive-keyring.gpg"
 
-elif test `find "$DIR/pbuilder/" -iname base.tgz -mtime 3`
+elif [[ `find "$DIR/pbuilder/" -iname 'base.tgz' -mtime +3 | wc -l` -eq 1 ]]; then
 # Updating pbuilder base.tgz
-then
     
     echo "Need to update pbuilder base.tgz"
 
