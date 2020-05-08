@@ -8,7 +8,7 @@ ADD rootfs.tar.xz /
 # Installing some dependencies
 RUN apt-get update --fix-missing \
     && apt-get dist-upgrade -y \
-    && apt-get install -y build-essential devscripts dh-make dh-python python3 debhelper \
+    && apt-get install -y build-essential devscripts dh-make python3 \
             quilt pbuilder sbuild lintian git-buildpackage debootstrap apt-file apt-utils \
             fakeroot dh-autoreconf vim less locales autopkgtest \
     && apt-get autoremove -y
