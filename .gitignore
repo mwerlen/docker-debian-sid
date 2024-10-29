@@ -1,2 +1,9 @@
 pbuilder/base.tgz
+pbuilder-sid/base.tgz
+pbuilder-trixie/base.tgz
+pbuilder-testing/base.tgz
 rootfs.tar.xz
+rootfs-sid.tar.xz
+rootfs-trixie.tar.xz
+rootfs-testing.tar.xz
+home

@@ -3,6 +3,8 @@
 README.md
 rootfs
 rootfs.tar
+rootfs-sid.tar
+rootfs-trixie.tar
 *.sh
 pbuilder
 pbuilderrc
